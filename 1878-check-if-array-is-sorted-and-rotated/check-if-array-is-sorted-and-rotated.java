@@ -1,29 +1,15 @@
 class Solution {
     public boolean check(int[] nums) {
-        int b = 0;
+            boolean fault = false;
+        int n = nums.length;
 
-        for(int i = 0; i < nums.length - 1 ; i++)
-        {
-            if(nums[i] > nums[i+1])
-            {
-                b++;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > nums[(i + 1) % n]) {
+                if (fault) return false;
+                fault = true;
             }
-            
         }
 
-        if(nums[nums.length -1] > nums[0])
-        {
-            b++;
-        }
-
-        if(b <=1)
-        {
-            return true;
-        }
-
-        return false;
-
-
-       
+        return true;
     }
 }
