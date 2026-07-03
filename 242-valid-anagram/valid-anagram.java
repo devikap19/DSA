@@ -5,18 +5,24 @@ class Solution {
             return false;
         }
 
-        char [] chararray1 = s.toCharArray();
-        char [] chararray2 = t.toCharArray();
-        Arrays.sort(chararray1);
-        Arrays.sort(chararray2);
+        int [] freq = new int[26];
 
-        for(int i = 0; i < s.length(); i++)
+        for(int i = 0 ; i < s.length(); i++)
         {
-            if(chararray1[i] != chararray2[i])
+            freq[s.charAt(i) - 'a']++;
+            freq[t.charAt(i) - 'a']--;
+        }
+
+        for(int i = 0; i < 26; i++)
+        {
+            if(freq[i] != 0)
             {
                 return false;
             }
         }
+
         return true;
+
     }
+
 }
