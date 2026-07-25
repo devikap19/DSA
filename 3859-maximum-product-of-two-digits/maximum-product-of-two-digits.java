@@ -1,16 +1,24 @@
 class Solution {
     public int maxProduct(int n) {
-        String str = String.valueOf(n);
-        int arr [] = new int[str.length()];
+       int firstmaximum = 0;
+       int secondmaximum = 0;
 
-        for(int i = 0; i < str.length() ; i++)
-        {
-            arr[i] = n % 10;
+       while(n > 0)
+       {
+            int x = n % 10;
+            if( x > firstmaximum)
+            {
+                secondmaximum = firstmaximum;
+                firstmaximum = x;
+            }
+            else if(x > secondmaximum)
+            {
+                secondmaximum = x;
+            }
+
             n /= 10;
-        }
+       }
 
-        Arrays.sort(arr);
-
-        return arr[str.length() - 1] * arr[str.length() - 2];
+        return firstmaximum * secondmaximum;
     }
 }
