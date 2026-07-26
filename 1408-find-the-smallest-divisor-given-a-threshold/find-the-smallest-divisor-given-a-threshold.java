@@ -4,13 +4,13 @@ class Solution {
         int low = 1;
         int high = Arrays.stream(nums).max().getAsInt();
 
-        while(low<=high)
+        while(low<high)
         {
             int mid = (high + low) / 2;
 
             if(getsum(nums,mid) <= threshold)
             {
-                high = mid - 1;
+                high = mid;
             }
             else
             {
@@ -18,7 +18,7 @@ class Solution {
             }
         }
 
-        return low;
+        return high;
     }
 
     public int getsum(int [] arr, int day)
