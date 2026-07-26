@@ -22,7 +22,7 @@ class Solution {
             }
         }
 
-        return right;
+        return left;
 
            
     }
