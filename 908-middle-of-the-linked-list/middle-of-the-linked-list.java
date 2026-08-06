@@ -14,30 +14,16 @@ class Solution {
         {
             return head;
         }
-        ListNode temp = head;
-        int count = 0;
+        ListNode slow = head;
+        ListNode fast = head;
 
-        while(temp != null)
+        while(fast != null && fast.next != null)
         {
-            count++;
-            temp = temp.next;
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
-        int mid = (count / 2) + 1;
-        temp = head;
-
-        while(temp != null)
-        {
-            mid = mid - 1;
-            if(mid == 0)
-            {
-                break;
-            }
-            temp = temp.next;
-        }
-
-        return temp;
-
+        return slow;
         
     }
 }
