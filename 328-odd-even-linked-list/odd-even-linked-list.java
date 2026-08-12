@@ -14,35 +14,20 @@ class Solution {
         {
             return head;
         }
-        ArrayList<Integer> arr = new ArrayList<>();
-        ListNode temp = head;
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode evenhead = head.next;
 
-        while(temp != null && temp.next != null)
+        while(even != null && even.next != null)
         {
-            arr.add(temp.val);
-            temp = temp.next.next;
-        }
-        if(temp != null) arr.add(temp.val);
+            odd.next = odd.next.next;
+            even.next = even.next.next;
 
-        temp = head.next;
-
-        while(temp != null && temp.next != null)
-        {
-            arr.add(temp.val);
-            temp = temp.next.next;
+            odd = odd.next;
+            even = even.next;
         }
 
-        if(temp != null) arr.add(temp.val);
-
-        temp = head;
-        int i = 0;
-        while(temp != null)
-        {
-            temp.val = arr.get(i);
-            temp = temp.next;
-            i++;
-        }
-
+        odd.next = evenhead;       
         return head;
 
     }
