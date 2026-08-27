@@ -29,7 +29,7 @@ class MinStack {
         long x = st.pop();
         if(x < mini)
         {
-            mini = 2L * (int)mini - x;
+            mini = 2L * mini - x;
         }
     }
     
