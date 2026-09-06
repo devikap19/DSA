@@ -15,30 +15,16 @@
  */
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        List<Integer> a = new ArrayList<>();
-        List<Integer> b = new ArrayList<>();
-        traversal(p,a);
-        traversal(q,b);
-
-        if(a.equals(b))
-        {
-            return true;
-        }
+       if(p == null && q == null)
+       {
+         return true;
+       }
+       if(p == null || q == null)
+       {
         return false;
-    }
+       }
 
-    private void traversal(TreeNode root, List<Integer> a)
-    {
-        if(root == null) 
-        {
-            a.add(null);
-            return;
-        }
-
-       
-        a.add(root.val);
-         traversal(root.left, a);
-        traversal(root.right,a);
+       return (p.val == q.val) && isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
 
     }
 }
