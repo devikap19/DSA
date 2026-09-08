@@ -16,16 +16,37 @@
 class Solution {
     public boolean isSymmetric(TreeNode root) {
         if(root == null) return true;
-        return isSymmetricuntil(root.left,root.right);
-    }
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root.left);
+        q.offer(root.right);
 
-    private boolean isSymmetricuntil(TreeNode root1, TreeNode root2)
-    {
-        if(root1 == null || root2 == null)
+        while(!q.isEmpty())
         {
-            return root1 == root2;
-        }
+            TreeNode root1 = q.poll();
+            TreeNode root2 = q.poll();
 
-        return root1.val == root2.val && isSymmetricuntil(root1.left,root2.right) && isSymmetricuntil(root1.right,root2.left);
+            if(root1 == null && root2 == null)
+            {
+                continue;
+            }
+            if(root1 == null || root2 == null)
+            {
+                return false;
+            }
+
+            if(root1.val != root2.val)
+            {
+                return false;
+            }
+
+            q.offer(root1.left);
+            q.offer(root2.right);
+
+            q.offer(root1.right);
+            q.offer(root2.left);
+        }
+        return true;
     }
+
+    
 }
