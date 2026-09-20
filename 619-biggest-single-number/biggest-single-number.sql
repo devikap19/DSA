@@ -1,11 +1,8 @@
 # Write your MySQL query state
-SELECT 
-(
-    SELECT num
-    FROM MyNumbers
+   SELECT max(num)AS num
+    FROM  (SELECT num 
+    FROM Mynumbers
     GROUP BY num
     HAVING COUNT(num) = 1
     ORDER BY num DESC
-    LIMIT 1
-)
-AS num;
+    LIMIT 1) t;
