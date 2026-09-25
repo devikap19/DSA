@@ -8,10 +8,9 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-  
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-         return calculate(l1, l2, 0); 
+        return calculate(l1, l2, 0); 
     }
     ListNode calculate(ListNode l1, ListNode l2, int carry)
        {
@@ -21,5 +20,8 @@ class Solution {
 	ListNode result=new ListNode(temp%10); 
 	result.next=calculate(l1==null? null: l1.next, l2==null? null: l2.next, temp/10); 
         return result;
-	 }
+        
+
+
+    }
 }
